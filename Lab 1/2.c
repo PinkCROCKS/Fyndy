@@ -34,6 +34,10 @@ int my_atof(const char* string, double* eps) {
         printf("incorrect arguments");
         return 1;
     }
+    if (sign == -1) {
+        printf("incorrect arguments");
+        return 1;
+    }
     *eps = result * sign;
     return 0;
 }
@@ -56,18 +60,23 @@ double Factorial(int n){
     return answer * 1.00;
 }
 
+double elim(double n) {
+    return pow(1.0 + 1 / n, n);
+}
+
 //=======================Rows============================
 
 double eRow(double epsilon) {
-    int n = 1;
-    double last_element = 0.0000;
+    double n = 0;
     double current_element = 1.0000;
-    while (current_element - last_element >= epsilon) {
-        last_element = current_element;
-        current_element += 1 / Factorial(n);
+    double summ = 0.0;
+    while (fabs(current_element) >= epsilon) {
         n++;
+        summ += current_element;
+        current_element *= 1 / n;
+        printf("%f ", summ);
     }
-    return current_element;
+    return summ;
 }
 
 double piRow(double epsilon) {
@@ -180,13 +189,13 @@ double squareEquation(double epsilon) {
 //=========================Limits=============================
 
 double eLimit(double epsilon) {
-    int n = 12;
-    double current_element = pow((1.00 + 1.00 / n), n * 1.00) * 1.00;
+    double n = 1;
+    double current_element = 1;
     double last_element = 0;
     while (fabs(current_element - last_element) >= epsilon) {
         last_element = current_element;
-        n++;
-        current_element = pow((1.00 + 1.00 / n), n * 1.00) * 1.00;
+        n*=2;
+        current_element = elim(n);
     }
     return current_element;
 }
@@ -204,7 +213,7 @@ double piLimit(double epsilon) {
 }
 
 double logLimit(double epsilon) {
-    int n = 12;
+    int n = 1;
     double current_element = (pow(2, 1.00 / n) - 1) * n;
     double last_element = 0;
     while (fabs(current_element - last_element) >= epsilon) {
