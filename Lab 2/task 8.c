@@ -122,10 +122,12 @@ int add_in_base(int base, char** answer, int* size_of_answer, char* new_number) 
     int carry = 0;
     int i;
     if (max_len + 1 > *size_of_answer) {
-        *answer = (char*)realloc(*answer, (max_len + 2) * sizeof(char));
-        if (*answer == NULL) {
+        char * yu = (char*)realloc(*answer, (max_len + 2) * sizeof(char));
+        if (yu == NULL) {
+            free(*answer);
             return memory_mistake;
         }
+        *answer = yu;
         *size_of_answer = max_len + 2;
     }
     for (i = len_answer; i < max_len + 1; i++) {
@@ -194,13 +196,13 @@ int base_sum(int base, int amount, char** answer, int* size, ...){
     return 0;
 }
 int main(){
-    char* first = "000001";
-    char* second = "00000aR";
+    char* first = "01";
+    char* second = "101";
     int size = 7;
     char * answer = (char *)malloc(size);
     answer[0] = '0';
     answer[1] = '\0';
-    int result = base_sum(36, 0, &answer, &size);
+    int result = base_sum(2, 2, &answer, &size, first, second);
     if (result){
         free(answer);
         return find_error(result);
