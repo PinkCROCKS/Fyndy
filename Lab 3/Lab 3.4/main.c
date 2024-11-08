@@ -17,7 +17,7 @@ const char* COMMANDS[] = {"/add\n",
                           "/print_not_delivered\n",
                           "/exit\n"};
 
-const char * incorrect_arguments[] = {"City must be <500\n", "Index must be 6 Digits. Example: 123456\n",
+const char * incorrect_arguments[] = {"Incorrect Mail Address Try again\n", "Index must be 6 Digits. Example: 123456\n",
                                       "weight must be a number > 0\n", "Incorrect ID. ID must be 14 Digits, "
                                        "for example: 12121212121212\n", "Incorrect Time. Write time by Format: DD:MM:YYYY HH:MM:SS\n", "Incorrect Time. Write time by Format: DD:MM:YYYY HH:MM:SS\n"};
 
@@ -33,9 +33,15 @@ int main() {
     print_post(stdout, &post, count_mails);
     char command[1000];
     command[0] = '\0';
+    int key = 0;
     printf("\nIf you need help: %s", COMMANDS[1]);
     while (1) {
-        if(!my_strcmp(command, "\n")) printf("%s> ", MSG[0]);
+        int y = 1;
+        if(!my_strcmp(command, "\n") || key) {
+            key = 0;
+            y = 0;
+            printf("%s> ", MSG[0]);
+        }
         char* er = fgets(command, sizeof(command), stdin);
         if (!er) break;
 //		Добавление письма
@@ -43,13 +49,11 @@ int main() {
             //printf("%s", MSG[1]);
             Mail mail;
             printf("Write Address in Format: city street house building apartment\n");
-            errorMsg = scan_mail(&mail, incorrect_arguments);
-            if (errorMsg == input_error) {
-                printf("%s", MSG[4]);
+            int k = 1;
+            k = scan_mail(&mail, incorrect_arguments);
+            if (k == input_error){
+                key = 1;
                 continue;
-            } else if (errorMsg) {
-                destroy_post(&post, count_mails);
-                return find_error(errorMsg);
             }
             //print_mail(stdout, &mail);
             errorMsg = put_mail_to_post(&post, &count_mails, &capacity_mails, &mail);
@@ -63,7 +67,7 @@ int main() {
 //			Печать всех команд
         } else if (!my_strcmp(command, COMMANDS[1]) || !my_strcmp(command, "2\n")) {  // КККККККККККККККККККККККККККККККККККККККК
             printf("You should write one of these commands:\n");
-            for (int i = 0; i < 7; ++i) {
+            for (int i = 0; i < 8; ++i) {
                 printf("%d. %s", i + 1, COMMANDS[i]);
             }
 //			Печать всех писем
@@ -125,11 +129,12 @@ int main() {
 //			Неверная команда
         } else if (!my_strcmp(command, COMMANDS[7])){
             break;
-        } else if (my_strcmp(er, "\n")) {
+        } else if (my_strcmp(er, "\n") && y) {
             printf("%s", MSG[3]);
         }
     }
-    //free(&(post.address_of_post));
+    destroy_address(post.address_of_post);
+    free(post.address_of_post);
     destroy_post(&post, count_mails);
     return 0;
 }
