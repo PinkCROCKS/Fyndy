@@ -219,7 +219,6 @@ void print_post(FILE * stream, Post* post, int amount_mails){
 }
 
 void destroy_post(Post * post, const int amount_mails){
-    destroy_address(post->address_of_post);
     for (int i = 0; i < amount_mails;++i){
         destroy_mail(&(post->mails[i]));
     }
@@ -351,7 +350,7 @@ int scan_mail(Mail * mail, char ** answers){
     char city[500];
     char street[500];
     int house;
-    char building[200];
+    char building[500];
     int apartment;
     char index[100];
     double weight;
@@ -360,13 +359,15 @@ int scan_mail(Mail * mail, char ** answers){
     Time delivered_time;
     Arguments k = a_address;
     int n = 0;
-    while (k != a_quit){
+    int sucess = 1;
+    while (k != a_quit && sucess){
         switch (k) {
             case a_address:
                 n = scanf("%s %s %d %s %d", city, street, &house, building, &apartment);
                 if (n != 5){
                     printf("%s", answers[a_address]);
-                    continue;
+                    sucess = 0;
+                    break;
                 }
                 n = 0;
                 k = a_index;
@@ -376,7 +377,7 @@ int scan_mail(Mail * mail, char ** answers){
                 n = scanf("%s", index);
                 if ((n != 1)||(incorrect_index(index))){
                     printf("%s", answers[a_index]);
-                    continue;
+                    break;
                 }
                 n = 0;
                 k = a_weight;
@@ -386,7 +387,7 @@ int scan_mail(Mail * mail, char ** answers){
                 n = scanf("%lf", &weight);
                 if ((n != 1)||(incorrect_weight(weight))){
                     printf("%s", answers[a_weight]);
-                    continue;
+                    break;
                 }
                 n = 0;
                 k = a_id;
@@ -396,37 +397,68 @@ int scan_mail(Mail * mail, char ** answers){
                 n = scanf("%s", mail_id);
                 if ((n != 1)||(incorrect_post_id(mail_id))){
                     printf("%s", answers[a_id]);
-                    continue;
+                    break;
                 }
                 n = 0;
                 k = a_create_time;
-                printf("Now write Create time by Format: DD:MM:YY HH:MM:SS\n");
+                printf("Now write Create time by Format: DD:MM:YYYY HH:MM:SS\n");
                 break;
             case a_create_time:
-                n = scanf("%d:%d:%d %d:%d:%d", &(create_time.day), &(create_time.month), &(create_time.year),
-                          &(create_time.hour), &(create_time.minute), &(create_time.sec));
-                if ((n != 6)||(incorrect_time(&create_time))){
-                    printf("%s", answers[a_create_time]);
-                    continue;
+                n = 0;
+                char input1[BUFSIZ];
+                char input2[BUFSIZ];
+                printf("Write Date: DD:MM:YYYY\n");
+                n = scanf("%s", input1);
+                int a = sscanf(input1, "%d:%d:%d", &(create_time.day), &(create_time.month), &(create_time.year));
+                if (a != 3){
+                    printf("Incorrect Format, Try again\n");
+                    break;
+                }
+                printf("Write Time: HH:MM:SS\n");
+                n = scanf("%s", input2);
+                int b = sscanf(input2, "%d:%d:%d", &(create_time.hour), &(create_time.minute), &(create_time.sec));
+                if (b != 3){
+                    printf("Incorrect Format, Try again\n");
+                    break;
+                }
+                if ((incorrect_time(&create_time))){
+                    printf("Incorrect Time\n");
+                    break;
                 }
                 n = 0;
                 k = a_deliver_time;
-                printf("Now write Deliver time by Format: DD:MM:YY HH:MM:SS\n");
+                printf("Now write Deliver time by Format: DD:MM:YYYY HH:MM:SS\n");
                 break;
             case a_deliver_time:
-                n = scanf("%d:%d:%d %d:%d:%d", &(delivered_time.day), &(delivered_time.month), &(delivered_time.year),
-                          &(delivered_time.hour), &(delivered_time.minute), &(delivered_time.sec));
-                if ((n != 6)||(incorrect_time(&delivered_time))){
-                    printf("%s", answers[a_deliver_time]);
-                    continue;
+                n = 0;
+                printf("Write Date: DD:MM:YYYY\n");
+                n = scanf("%s", input1);
+                a = sscanf(input1, "%d:%d:%d", &(delivered_time.day), &(delivered_time.month), &(delivered_time.year));
+                if (a != 3){
+                    printf("Incorrect Format, Try again\n");
+                    break;
+                }
+                printf("Write Time: HH:MM:SS\n");
+                n = scanf("%s", input2);
+                b = sscanf(input2, "%d:%d:%d", &(delivered_time.hour), &(delivered_time.minute), &(delivered_time.sec));
+                if (b != 3){
+                    printf("Incorrect Format, Try again\n");
+                    break;
+                }
+                if ((incorrect_time(&create_time))){
+                    printf("Incorrect Time\n");
+                    break;
                 }
                 n = 0;
                 k = a_quit;
-                printf("Your mail was added\n");
+                printf("Now write Deliver time by Format: DD:MM:YYYY HH:MM:SS\n");
                 break;
         }
     }
-    return create_mail(mail, city, street, house, building, apartment, index, weight, mail_id, create_time, delivered_time);
+    if (sucess){
+        return create_mail(mail, city, street, house, building, apartment, index, weight, mail_id, create_time, delivered_time);
+    }
+    return input_error;
 }
 
 void clear_buffer(){
