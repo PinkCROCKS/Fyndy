@@ -346,119 +346,139 @@ int find_not_delivered_mails(Post* post, int amount_mails, FILE * file){
     return 0;
 }
 
-int scan_mail(Mail * mail, char ** answers){
-    char city[500];
-    char street[500];
-    int house;
-    char building[500];
-    int apartment;
-    char index[100];
-    double weight;
-    char mail_id[50];
-    Time create_time;
-    Time delivered_time;
-    Arguments k = a_address;
-    int n = 0;
-    int sucess = 1;
-    while (k != a_quit && sucess){
-        switch (k) {
-            case a_address:
-                n = scanf("%s %s %d %s %d", city, street, &house, building, &apartment);
-                if (n != 5){
-                    printf("%s", answers[a_address]);
-                    sucess = 0;
-                    break;
-                }
-                n = 0;
-                k = a_index;
-                printf("Now write index in format six digits. For Example: 123456\n");
-                break;
-            case a_index:
-                n = scanf("%s", index);
-                if ((n != 1)||(incorrect_index(index))){
-                    printf("%s", answers[a_index]);
-                    break;
-                }
-                n = 0;
-                k = a_weight;
-                printf("Now write weight. It must be > 0\n");
-                break;
-            case a_weight:
-                n = scanf("%lf", &weight);
-                if ((n != 1)||(incorrect_weight(weight))){
-                    printf("%s", answers[a_weight]);
-                    break;
-                }
-                n = 0;
-                k = a_id;
-                printf("Now write mail ID. It is 14 Digits, for example: 12121212121212\n");
-                break;
-            case a_id:
-                n = scanf("%s", mail_id);
-                if ((n != 1)||(incorrect_post_id(mail_id))){
-                    printf("%s", answers[a_id]);
-                    break;
-                }
-                n = 0;
-                k = a_create_time;
-                printf("Now write Create time by Format: DD:MM:YYYY HH:MM:SS\n");
-                break;
-            case a_create_time:
-                n = 0;
-                char input1[BUFSIZ];
-                char input2[BUFSIZ];
-                printf("Write Date: DD:MM:YYYY\n");
-                n = scanf("%s", input1);
-                int a = sscanf(input1, "%d:%d:%d", &(create_time.day), &(create_time.month), &(create_time.year));
-                if (a != 3){
-                    printf("Incorrect Format, Try again\n");
-                    break;
-                }
-                printf("Write Time: HH:MM:SS\n");
-                n = scanf("%s", input2);
-                int b = sscanf(input2, "%d:%d:%d", &(create_time.hour), &(create_time.minute), &(create_time.sec));
-                if (b != 3){
-                    printf("Incorrect Format, Try again\n");
-                    break;
-                }
-                if ((incorrect_time(&create_time))){
-                    printf("Incorrect Time\n");
-                    break;
-                }
-                n = 0;
-                k = a_deliver_time;
-                printf("Now write Deliver time by Format: DD:MM:YYYY HH:MM:SS\n");
-                break;
-            case a_deliver_time:
-                n = 0;
-                printf("Write Date: DD:MM:YYYY\n");
-                n = scanf("%s", input1);
-                a = sscanf(input1, "%d:%d:%d", &(delivered_time.day), &(delivered_time.month), &(delivered_time.year));
-                if (a != 3){
-                    printf("Incorrect Format, Try again\n");
-                    break;
-                }
-                printf("Write Time: HH:MM:SS\n");
-                n = scanf("%s", input2);
-                b = sscanf(input2, "%d:%d:%d", &(delivered_time.hour), &(delivered_time.minute), &(delivered_time.sec));
-                if (b != 3){
-                    printf("Incorrect Format, Try again\n");
-                    break;
-                }
-                if ((incorrect_time(&create_time))){
-                    printf("Incorrect Time\n");
-                    break;
-                }
-                n = 0;
-                k = a_quit;
-                printf("Now write Deliver time by Format: DD:MM:YYYY HH:MM:SS\n");
-                break;
+int is_correct_coords(char* part){
+    return size_of_str(part) > 0;
+}
+
+int is_correct_index(char * part){
+    return size_of_str(part) == 6 && is_digit_str(part);
+}
+
+int is_correct_ID(char * part){
+    return size_of_str(part) == 14 && is_digit_str(part);
+}
+
+void delete_enter(char * str){
+    int size = size_of_str(str);
+    str[size - 1] = '\0';
+}
+
+void detect_cord(char** coord, long int* len, char* first, char* incorrect_answer, int (*func)(char *)){
+    printf("%s", first);
+    getline(coord, len, stdin);
+    delete_enter(*coord);
+    while ((!func(*coord))){
+        printf("%s", incorrect_answer);
+        getline(coord, len, stdin);
+        delete_enter(*coord);
+    }
+}
+
+int is_correct_number(char* tmp){
+    if (!is_digit_str(tmp)){
+        return 0;
+    }
+    int k = atoi(tmp);
+    if (k < 1){
+        return 0;
+    }
+    return k;
+}
+
+void detect_number(int* number, char* first, char* incorrect_answer, int (*func)(char *)){
+    char * tmp = NULL;
+    long int len;
+    printf("%s", first);
+    getline(&tmp, &len, stdin);
+    delete_enter(tmp);
+    while (!(*number = func(tmp))){
+        printf("%s", incorrect_answer);
+        getline(&tmp, &len, stdin);
+        delete_enter(tmp);
+    }
+    free(tmp);
+}
+
+void detect_time(Time* time){
+    long int len;
+    char* birth_date = NULL;
+    int result;
+    int key = 0;
+    while (1) {
+        time->sec = 12;
+        time->minute = 12;
+        time->hour = 12;
+        getline(&birth_date, &len, stdin);
+        result = sscanf(birth_date, "%d.%d.%d", &(time->day), &(time->month), &(time->year));
+        if (result != 3){
+            printf("Incorrect Format. Write Date in Format DD.MM.YYYY:");
+            continue;
+        } else if (!is_correct_time(time)){
+            printf("Incorrect Date. Write Date in Format DD.MM.YYYY:");
+            continue;
         }
+        printf("Write Time in Format HH.MM.SS:");
+        while (1){
+            getline(&birth_date, &len, stdin);
+            result = sscanf(birth_date, "%d.%d.%d", &(time->hour), &(time->minute), &(time->sec));
+            if (result == 3 && is_correct_time(time)){
+                key = 1;
+                break;
+            }
+            if (result != 3){
+                printf("Incorrect Format. Write Time in Format HH.MM.SS:");
+                continue;
+            }
+            printf("Incorrect Time. Write Time in Format HH.MM.SS:");
+        }
+        break;
     }
-    if (sucess){
-        return create_mail(mail, city, street, house, building, apartment, index, weight, mail_id, create_time, delivered_time);
+    free(birth_date);
+}
+
+int scan_mail(Mail * mail, char ** answers){
+    long int len;
+    char* city = NULL;
+    char * street = NULL;
+    int house;
+    char * building = NULL;
+    int flat;
+    char * index = NULL;
+    double weight;
+    char* mail_id = NULL;
+    Time create_time;
+    Time deliver_time;
+    detect_cord(&city, &len, "Write City:", "Write City:", is_correct_coords);
+    detect_cord(&street, &len, "Write Street:", "Write Street:", is_correct_coords);
+    detect_number(&house, "Write House number:", "Write NUMBER. of House:", is_correct_number);
+    detect_cord(&building, &len, "Write building:", "Write building:", is_correct_coords);
+    detect_number(&flat, "Write flat number:", "Write NUMBER. of flat:", is_correct_number);
+    detect_cord(&index, &len, "Write Index. It must be 6 digits:", "Write Index again. It must be 6 digits:", is_correct_index);
+    int result = 0;
+    printf("Write weight of parcel > 0:");
+    while (1){
+        result = scanf("%lf", &weight);
+        if ((result == 1)&&(weight > 0)){
+            break;
+        }
+        if (result != 1){
+            printf("Incorrect Format. Write Weight >0:");
+            continue;
+        }
+        printf("Weight must be > 0. Write weight Again:");
     }
-    return input_error;
+    detect_cord(&mail_id, &len, "Write ID. 14 digits", "Incorrect Format. Write 14 digits:", is_correct_ID);
+    printf("Write Create Date in Format DD.MM.YYYY:");
+    detect_time(&create_time);
+    printf("Write Deliver Date in Format DD.MM.YYYY:");
+    detect_time(&deliver_time);
+    result = create_mail(mail, city, street, house, building, flat, index, weight, mail_id, create_time, deliver_time);
+    free(city);
+    free(street);
+    free(building);
+    free(index);
+    free(mail_id);
+    return result;
 }
 
 void clear_buffer(){

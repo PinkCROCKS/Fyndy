@@ -8,8 +8,6 @@ add_executable(Laba_3_4 main.c
         strings.h
         mail.c
         mail.h
-        overi.c
-        overi.h
-        array.c
-        array.h
+        dialog.c
+        dialog.h
 )

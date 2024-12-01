@@ -28,6 +28,10 @@ int size_of_str(const char *str) {
     return k;
 }
 
+int is_str_equal(const char* str1, const char* str2){
+    return !(my_strcmp(str1, str2));
+}
+
 int create_str(String* current, char* content){
     current->size = size_of_str(content);
     char* yu = (char *)malloc(current->size + 1);

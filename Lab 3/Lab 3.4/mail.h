@@ -58,6 +58,8 @@ int bigger_time(Time *, Time *);
 
 //Mail
 int create_mail(Mail*, char*, char*, int, char*, unsigned int, char*, double, char*, Time, Time);
+void detect_cord(char** coord, long int* len, char* first, char* incorrect_answer, int (*func)(char *));
+int is_correct_ID(char * part);
 void destroy_mail(Mail*);
 void print_mail(FILE*, Mail*);
 int put_mail_to_post(Post*, int*, int*, Mail*);

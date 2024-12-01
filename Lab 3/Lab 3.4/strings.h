@@ -31,4 +31,5 @@ int copy_new_str(String**, const String*);
 int concatenate(String*, String*);
 void print_string(FILE*, String*, char*);
 int string_to_int(const String *);
+int is_str_equal(const char* str1, const char* str2);
 #endif //LABA_3_4_STRING_H
