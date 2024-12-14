@@ -27,10 +27,10 @@ int create_address_ptr(Address** address, char* city, char* street, int number_h
         return input_error;
     }
     Address * temp = (Address *) malloc(sizeof(Address));
-    *address = temp;
     if (temp == NULL){
         return memory_error;
     }
+    *address = temp;
     if (create_address(temp, city, street, number_house, building, flat, index)){
         free(temp);
         return memory_error;
@@ -202,7 +202,8 @@ int create_post(Post * post, int amount_of_mails, char *city, char *street, int 
     }
     Mail * temp = (Mail*) malloc(amount_of_mails * sizeof(Mail));
     if (temp == NULL){
-        destroy_address(&(post->address_of_post));
+        destroy_address(post->address_of_post);
+        free(post->address_of_post);
         return memory_error;
     }
     post->mails = temp;
@@ -303,6 +304,9 @@ int find_delivered_mails(Post* post, int amount_mails, FILE * file){
     struct tm * now = localtime(&real_time);
     Time time0 = {now->tm_mday, now->tm_mon + 1, now->tm_year + 1900, now->tm_hour, now->tm_min, now->tm_sec};
     Mail * delivered_mails = (Mail *) malloc(amount_mails * sizeof(Mail));
+    if (delivered_mails == NULL){
+        return memory_error;
+    }
     int amount_delivered = 0;
     for (int i = 0; i < amount_mails; i++){
         Time time1;
@@ -318,6 +322,9 @@ int find_delivered_mails(Post* post, int amount_mails, FILE * file){
     for (int i = 0; i < amount_delivered; i++){
         print_mail(file, &delivered_mails[i]);
     }
+    if (amount_delivered == 0){
+        printf("All mails are not delivered\n");
+    }
     free(delivered_mails);
     return 0;
 }
@@ -327,6 +334,9 @@ int find_not_delivered_mails(Post* post, int amount_mails, FILE * file){
     struct tm * now = localtime(&real_time);
     Time time0 = {now->tm_mday, now->tm_mon + 1, now->tm_year + 1900, now->tm_hour, now->tm_min, now->tm_sec};
     Mail * delivered_mails = (Mail *) malloc(amount_mails * sizeof(Mail));
+    if (delivered_mails == NULL){
+        return memory_error;
+    }
     int amount_delivered = 0;
     for (int i = 0; i < amount_mails; i++){
         Time time1;
@@ -341,6 +351,9 @@ int find_not_delivered_mails(Post* post, int amount_mails, FILE * file){
     }
     for (int i = 0; i < amount_delivered; i++){
         print_mail(file, &delivered_mails[i]);
+    }
+    if (amount_delivered == 0){
+        printf("All mails are delivered\n");
     }
     free(delivered_mails);
     return 0;

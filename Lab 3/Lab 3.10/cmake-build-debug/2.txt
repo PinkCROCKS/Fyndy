@@ -1,0 +1,1410 @@
+Tree number 2:
+A
+  B
+    E
+      G
+       
+      T
+       
+      R
+        W
+         
+        Z
+     
+    F
+      L
+       
+      M
+   
+  C
+
+Tree number 3:
+A
+  B
+    E
+      G
+       
+      T
+       
+      R
+        W
+         
+        Z
+     
+    F
+      L
+       
+      M
+   
+  C
+    C
+     
+    C
+     
+    C
+      C
+       
+      C
+       
+      C
+
+Tree number 4:
+C
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+   
+  C
+   
+  C
+    C
+     
+    C
+

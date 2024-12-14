@@ -47,7 +47,7 @@ int dialog(Post* post, int * capacity_mails, int* count_mails){
                 put_mail_to_post(post, count_mails, capacity_mails, &mail);
                 printf("Your Mail added to post\n%s", MSG[0]);
             } else {
-                printf("MISTAKE\n%s", MSG[0]);
+                printf("MISTAKE with delivery date\n%s", MSG[0]);
             }
         } else if (is_str_equal(command, "3\n")){
             print_post(stdout, post, *count_mails);
@@ -86,10 +86,16 @@ int dialog(Post* post, int * capacity_mails, int* count_mails){
             clear_str(&str);
             printf("%s", MSG[0]);
         } else if (is_str_equal(command, "6\n")){
-            find_delivered_mails(post, *count_mails, stdout);
+            if (find_delivered_mails(post, *count_mails, stdout)){
+                free(command);
+                return memory_error;
+            }
             printf("%s", MSG[0]);
         } else if (is_str_equal(command, "7\n")){
-            find_not_delivered_mails(post, *count_mails, stdout);
+            if (find_not_delivered_mails(post, *count_mails, stdout)){
+                free(command);
+                return memory_error;
+            }
             printf("%s", MSG[0]);
         } else if (is_str_equal(command, "\n")){
             print_commands();
@@ -102,5 +108,3 @@ int dialog(Post* post, int * capacity_mails, int* count_mails){
     }
     return 0;
 }
-
-#include "dialog.h"
